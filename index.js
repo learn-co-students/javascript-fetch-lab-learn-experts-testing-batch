@@ -13,22 +13,16 @@ function getIssues() {
 }
 
 function showIssues(json) {
-  console.log(json)
-  issuesTemplate = Handlebars.compile($("#issues-template").html());
-  for (var i = 0 ; i < json.length; i++) {
-    var context = {title: json[i].title, body: json[i].body, html_url: json[i].html_url};  
-    var html = issuesTemplate(context);
-    $("#results").append(html);
-    console.log(html)
-  }
+  const template = Handlebars.compile(document.getElementById('issues-template').innerHTML)
+  document.getElementById('issues').innerHTML = template(json)
 }
 
 function createIssue() {
   var repo = 'https://api.github.com/repos/cassaram09/javascript-fetch-lab/issues'
   var token = getToken();
   var data = {
-    title: $('#title').val(),
-    body: $('#body').val()
+    title: document.getElementById('title').value,
+    body: document.getElementById('body').value
   }
 
   fetch(repo, {
@@ -39,16 +33,12 @@ function createIssue() {
     }
   }).then(response => console.log(response))
     .then(getIssues());
-
 }
 
 function showResults(json) {
-  console.log(json)
-  repoTemplate = Handlebars.compile($("#repo-template").html());
-  var context = {name: json.full_name, url: json.html_url};
-  var html = repoTemplate(context);
-  $("#results").html(html);
-  console.log(html)
+  repoTemplate = Handlebars.compile(document.getElementById("repo-template").innerHTML);
+  var context = {name: json.name, html_url: json.html_url};
+  document.getElementById("results").innerHTML = repoTemplate(context);
 }
 
 function forkRepo() {

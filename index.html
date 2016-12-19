@@ -54,13 +54,15 @@
       <h3>Forked Successfully!</h3>
       <div class="body">
         <p>{{name}}<p>
-        <a href="{{url}}">{{url}}<a>
+        <a href="{{html_url}}">{{html_url}}<a>
       </div>
     </script>
     <script id="issues-template" type="text/x-handlebars-template">
-        <h3>{{title}}</h3>
-        <p>{{body}}</p>
-        <a href="{{html_url}}">{{html_url}}<a>
+      {{#each this}}
+        <h3>{{this.title}}</h3>
+        <p>{{this.body}}</p>
+        <a href="{{html_url}}">{{this.html_url}}<a>
+      {{/each}}
     </script>
 
     <script src="index.js"></script>
