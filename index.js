@@ -37,7 +37,7 @@ function createIssue() {
 
 function showResults(json) {
   repoTemplate = Handlebars.compile(document.getElementById("repo-template").innerHTML);
-  var context = {name: json.name, html_url: json.html_url};
+  var context = {full_name: json.full_name, html_url: json.html_url};
   document.getElementById("results").innerHTML = repoTemplate(context);
 }
 
