@@ -42,9 +42,16 @@
     <script id="repo-template" type="text/x-handlebars-template">
       <h3>Forked Successfully!</h3>
       <!--fill me in with templatey goodness-->
+      {{html_url}}
+      {{full_name}}
     </script>
     <script id="issues-template" type="text/x-handlebars-template">
       <!--fill me in with templatey goodness-->
+      {{#each issue}}
+        {{url}}
+        {{body}}
+        {{title}}
+      {{/each}}
     </script>
   </body>
 </html>
