@@ -39,7 +39,7 @@ describe('index', () => {
 
       it('renders the right template', () => {
         const spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
-        showIssues()
+        showIssues([{title: "something", body: "something else"}])
         expect(spy).toHaveBeenCalledWith(document.getElementById('issues-template').innerHTML)
         spy.restore()
       })
@@ -54,7 +54,7 @@ describe('index', () => {
 
       it('renders the right template', () => {
         const spy = expect.spyOn(window.Handlebars, "compile").andCallThrough()
-        showResults()
+        showResults({full_name: "something", html_url: "something else"})
         expect(spy).toHaveBeenCalledWith(document.getElementById('repo-template').innerHTML)
         spy.restore()
       })
